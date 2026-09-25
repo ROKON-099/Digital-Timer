@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Study Timer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+
+      <div class="logo">
+        <div class="logo-icon">⏱</div>
+
+        <div>
+          <h1>StudyFlow</h1>
+          <p>Focus. Study. Improve.</p>
+        </div>
+      </div>
+
+      <div class="date" id="currentDate"></div>
+
+    </header>
+
+
+    <!-- Dashboard -->
+    <main class="dashboard">
+
+      <!-- Timer Card -->
+      <section class="timer-card">
+
+        <div class="timer-top">
+          <span class="timer-label">FOCUS SESSION</span>
+
+          <span class="status" id="status">
+            Ready
+          </span>
+        </div>
+
+        <div class="timer" id="timer">
+          25:00
+        </div>
+
+        <p class="timer-description">
+          Stay focused and make your study session count.
+        </p>
+
+        <div class="timer-controls">
+
+          <button class="btn primary" id="startBtn">
+            ▶ Start
+          </button>
+
+          <button class="btn secondary" id="pauseBtn">
+            ⏸ Pause
+          </button>
+
+          <button class="btn danger" id="resetBtn">
+            ↻ Reset
+          </button>
+
+        </div>
+
+        <!-- Quick Time -->
+        <div class="quick-time">
+
+          <button data-minutes="25">25 min</button>
+          <button data-minutes="50">50 min</button>
+          <button data-minutes="60">60 min</button>
+
+        </div>
+
+      </section>
+
+
+      <!-- Statistics -->
+      <section class="stats">
+
+        <div class="stat-card">
+
+          <div class="stat-icon">📚</div>
+
+          <div>
+            <p>Today</p>
+            <h2 id="todayStudy">0m</h2>
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon">🎯</div>
+
+          <div>
+            <p>Daily Goal</p>
+            <h2 id="dailyGoal">120m</h2>
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon">🔥</div>
+
+          <div>
+            <p>Streak</p>
+            <h2 id="streak">0 days</h2>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Progress -->
+      <section class="progress-card">
+
+        <div class="section-heading">
+
+          <div>
+            <p class="small-title">DAILY PROGRESS</p>
+            <h2>Keep going 🚀</h2>
+          </div>
+
+          <strong id="progressText">
+            0%
+          </strong>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+          <div
+            class="progress-fill"
+            id="progressFill"
+          ></div>
+
+        </div>
+
+        <div class="progress-info">
+
+          <span id="progressTime">
+            0 min studied
+          </span>
+
+          <span>
+            Goal: 120 min
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- Goal Setting -->
+      <section class="goal-card">
+
+        <div>
+          <p class="small-title">STUDY TARGET</p>
+
+          <h2>Set your daily goal</h2>
+
+          <p>
+            Choose how many minutes you want to study every day.
+          </p>
+        </div>
+
+        <div class="goal-control">
+
+          <input
+            type="number"
+            id="goalInput"
+            min="10"
+            max="1440"
+            placeholder="120"
+          >
+
+          <button id="saveGoal">
+            Save Goal
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+      <p>
+        Built for better focus ❤️
+      </p>
+
+      <p>
+        StudyFlow © 2026
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <script src="index.js"></script>
+
+</body>
+</html>
