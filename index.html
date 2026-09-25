@@ -1,103 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Study Timer</title>
+  <title>StudyFlow</title>
 
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="index.css">
+  <!-- Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <div class="app">
 
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
+
     <header class="header">
 
-      <div class="logo">
-        <div class="logo-icon">⏱</div>
+      <div class="brand">
+
+        <div class="brand-icon">
+          <i data-lucide="timer"></i>
+        </div>
 
         <div>
           <h1>StudyFlow</h1>
-          <p>Focus. Study. Improve.</p>
+          <p>Study smarter</p>
         </div>
+
       </div>
 
-      <div class="date" id="currentDate"></div>
+      <div class="header-date">
+
+        <i data-lucide="calendar-days"></i>
+
+        <span id="date">
+          Sep 25, 2026
+        </span>
+
+      </div>
 
     </header>
 
 
-    <!-- Dashboard -->
-    <main class="dashboard">
+    <!-- ================= MAIN ================= -->
 
-      <!-- Timer Card -->
-      <section class="timer-card">
+    <main>
 
-        <div class="timer-top">
-          <span class="timer-label">FOCUS SESSION</span>
 
-          <span class="status" id="status">
+      <!-- ================= TIMER ================= -->
+
+      <section class="timer-section">
+
+        <div class="timer-header">
+
+          <div>
+            <span class="eyebrow">
+              <i data-lucide="target"></i>
+              FOCUS
+            </span>
+
+            <h2>Study Timer</h2>
+          </div>
+
+          <div class="session-status" id="status">
+            <span></span>
             Ready
-          </span>
+          </div>
+
         </div>
 
-        <div class="timer" id="timer">
-          25:00
+
+        <!-- Circular Timer -->
+
+        <div class="timer-wrapper">
+
+          <svg
+            class="timer-svg"
+            viewBox="0 0 300 300"
+          >
+
+            <!-- Background Circle -->
+
+            <circle
+              class="timer-track"
+              cx="150"
+              cy="150"
+              r="132"
+            />
+
+            <!-- Progress -->
+
+            <circle
+              class="timer-progress"
+              id="timerProgress"
+              cx="150"
+              cy="150"
+              r="132"
+            />
+
+          </svg>
+
+
+          <div class="timer-content">
+
+            <div class="timer-icon">
+              <i data-lucide="book-open"></i>
+            </div>
+
+            <div
+              class="timer-display"
+              id="timer"
+            >
+              60:00
+            </div>
+
+            <span class="timer-label">
+              Focus Time
+            </span>
+
+          </div>
+
         </div>
 
-        <p class="timer-description">
-          Stay focused and make your study session count.
-        </p>
+
+        <!-- Controls -->
 
         <div class="timer-controls">
 
-          <button class="btn primary" id="startBtn">
-            ▶ Start
+          <button
+            class="control-btn start"
+            id="startBtn"
+            title="Start"
+          >
+            <i data-lucide="play"></i>
+            <span>Start</span>
           </button>
 
-          <button class="btn secondary" id="pauseBtn">
-            ⏸ Pause
+          <button
+            class="control-btn pause"
+            id="pauseBtn"
+            title="Pause"
+          >
+            <i data-lucide="pause"></i>
+            <span>Pause</span>
           </button>
 
-          <button class="btn danger" id="resetBtn">
-            ↻ Reset
+          <button
+            class="control-btn reset"
+            id="resetBtn"
+            title="Reset"
+          >
+            <i data-lucide="rotate-ccw"></i>
+            <span>Reset</span>
           </button>
 
         </div>
 
-        <!-- Quick Time -->
-        <div class="quick-time">
 
-          <button data-minutes="25">25 min</button>
-          <button data-minutes="50">50 min</button>
-          <button data-minutes="60">60 min</button>
+        <!-- Presets -->
+
+        <div class="presets">
+
+          <button data-time="25">
+            <i data-lucide="zap"></i>
+            25m
+          </button>
+
+          <button data-time="50">
+            <i data-lucide="zap"></i>
+            50m
+          </button>
+
+          <button
+            class="active"
+            data-time="60"
+          >
+            <i data-lucide="zap"></i>
+            60m
+          </button>
+
+          <button data-time="90">
+            <i data-lucide="zap"></i>
+            90m
+          </button>
 
         </div>
 
       </section>
 
 
-      <!-- Statistics -->
-      <section class="stats">
+      <!-- ================= STATS ================= -->
+
+      <section class="stats-grid">
+
 
         <div class="stat-card">
 
-          <div class="stat-icon">📚</div>
+          <div class="stat-icon blue">
+            <i data-lucide="book-open"></i>
+          </div>
 
           <div>
-            <p>Today</p>
-            <h2 id="todayStudy">0m</h2>
+            <span>Today</span>
+
+            <strong id="todayStudy">
+              0m
+            </strong>
           </div>
 
         </div>
@@ -105,11 +227,16 @@
 
         <div class="stat-card">
 
-          <div class="stat-icon">🎯</div>
+          <div class="stat-icon green">
+            <i data-lucide="target"></i>
+          </div>
 
           <div>
-            <p>Daily Goal</p>
-            <h2 id="dailyGoal">120m</h2>
+            <span>Goal</span>
+
+            <strong id="dailyGoal">
+              120m
+            </strong>
           </div>
 
         </div>
@@ -117,27 +244,45 @@
 
         <div class="stat-card">
 
-          <div class="stat-icon">🔥</div>
+          <div class="stat-icon orange">
+            <i data-lucide="flame"></i>
+          </div>
 
           <div>
-            <p>Streak</p>
-            <h2 id="streak">0 days</h2>
+            <span>Streak</span>
+
+            <strong id="streak">
+              0d
+            </strong>
           </div>
 
         </div>
+
 
       </section>
 
 
-      <!-- Progress -->
+      <!-- ================= PROGRESS ================= -->
+
       <section class="progress-card">
 
-        <div class="section-heading">
+        <div class="progress-top">
 
-          <div>
-            <p class="small-title">DAILY PROGRESS</p>
-            <h2>Keep going 🚀</h2>
+          <div class="progress-title">
+
+            <div class="progress-icon">
+              <i data-lucide="chart-no-axes-column"></i>
+            </div>
+
+            <div>
+              <span>Daily Progress</span>
+              <small id="progressTime">
+                0 min studied
+              </small>
+            </div>
+
           </div>
+
 
           <strong id="progressText">
             0%
@@ -155,14 +300,21 @@
 
         </div>
 
-        <div class="progress-info">
 
-          <span id="progressTime">
-            0 min studied
+        <div class="progress-bottom">
+
+          <span>
+            <i data-lucide="clock-3"></i>
+            <span id="remainingText">
+              120 min left
+            </span>
           </span>
 
           <span>
-            Goal: 120 min
+            <i data-lucide="flag"></i>
+            <span id="goalText">
+              120 min
+            </span>
           </span>
 
         </div>
@@ -170,57 +322,67 @@
       </section>
 
 
-      <!-- Goal Setting -->
+      <!-- ================= GOAL ================= -->
+
       <section class="goal-card">
 
-        <div>
-          <p class="small-title">STUDY TARGET</p>
+        <div class="goal-left">
 
-          <h2>Set your daily goal</h2>
+          <div class="goal-icon">
+            <i data-lucide="settings-2"></i>
+          </div>
 
-          <p>
-            Choose how many minutes you want to study every day.
-          </p>
+          <div>
+            <strong>Daily Goal</strong>
+            <span>Set your target</span>
+          </div>
+
         </div>
 
-        <div class="goal-control">
+
+        <div class="goal-input">
 
           <input
             type="number"
             id="goalInput"
             min="10"
             max="1440"
-            placeholder="120"
+            value="120"
           >
 
+          <span>min</span>
+
           <button id="saveGoal">
-            Save Goal
+            <i data-lucide="check"></i>
           </button>
 
         </div>
 
       </section>
 
+
     </main>
 
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
 
-      <p>
-        Built for better focus ❤️
-      </p>
+      <span>
+        <i data-lucide="heart"></i>
+        Keep learning
+      </span>
 
-      <p>
-        StudyFlow © 2026
-      </p>
+      <span>
+        StudyFlow
+      </span>
 
     </footer>
 
   </div>
 
 
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
